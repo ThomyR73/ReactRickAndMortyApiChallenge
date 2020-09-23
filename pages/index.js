@@ -87,7 +87,7 @@ export default function Characters() {
     <Layout>
       <div className="container-fluid bg-light d-flex align-items-start col-md-10">
         <div className="row d-flex align-items-start h-100 col-md-12">
-          <Search setFilter={setFilter} searching="Characters"></Search>
+          <Search setFilter={setFilter} searching="characters"></Search>
 
           {renderContent()}
 

@@ -21,9 +21,7 @@ const Search = ({ setFilter, searching }) => {
     }
 
     const startSearch = (e) => {
-        console.log(e.length)
         if (e.length >= 3) {
-            console.log(e)
             setName(e)
             setFilter({
                 name

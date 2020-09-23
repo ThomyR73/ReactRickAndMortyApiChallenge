@@ -1,7 +1,14 @@
 import React from 'react'
 import CharsCard from './CharsCard'
 
-const LocationCard = ({ name, dimension, type, residents, locationId  }) => {
+const LocationCard = ({ name, dimension, type, residents, locationId }) => {
+    const checkResidents = (residents) => {
+        const {name} = residents[0]
+        if (!name){
+            return false
+        }
+        return true
+    } 
     return (
         <div className="card m-2">
             <div className="card-body">
@@ -11,14 +18,14 @@ const LocationCard = ({ name, dimension, type, residents, locationId  }) => {
                 <p className="card-text">
                     {dimension}
                 </p>
-                <button type="button" className="btn btn-dark" data-toggle="modal" data-target={"#Modal"+locationId}>
+                <button type="button" className="btn btn-dark" data-toggle="modal" data-target={"#Modal" + locationId}>
                     View More
                 </button>
-                <div className="modal fade" id={"Modal"+locationId} tabIndex="-1" aria-labelledby={"ModalLabel"+locationId} aria-hidden="true">
+                <div className="modal fade" id={"Modal" + locationId} tabIndex="-1" aria-labelledby={"ModalLabel" + locationId} aria-hidden="true">
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id={"ModalLabel"+locationId}>{name}</h5>
+                                <h5 className="modal-title" id={"ModalLabel" + locationId}>{name}</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -36,29 +43,23 @@ const LocationCard = ({ name, dimension, type, residents, locationId  }) => {
                                     <p className="font-weight-bold mr-2">Dimension: </p>
                                     <p>{dimension}</p>
                                 </div>
-                                {residents.length ? (
+                                <div className="row d-flex justify-content-center">
 
-                                    <div className="row d-flex justify-content-center">
-                                        <div className="xl:col-6 l:col-6 sm:col-12">
-                                            <CharsCard name="Hydrogen-F" img="https://rickandmortyapi.com/api/character/avatar/161.jpeg" button={false}></CharsCard>
-                                        </div>
-                                        <div className="xl:col-6 l:col-6 sm:col-12">
-                                            <CharsCard name="Hydrogen-F" img="https://rickandmortyapi.com/api/character/avatar/161.jpeg" button={false}></CharsCard>
-                                        </div>
-                                        <div className="xl:col-6 l:col-6 sm:col-12">
-                                            <CharsCard name="Hydrogen-F" img="https://rickandmortyapi.com/api/character/avatar/161.jpeg" button={false}></CharsCard>
-                                        </div>
-                                        <div className="xl:col-6 l:col-6 sm:col-12">
-                                            <CharsCard name="Hydrogen-F" img="https://rickandmortyapi.com/api/character/avatar/161.jpeg" button={false}></CharsCard>
-                                        </div>
-                                        <div className="xl:col-6 l:col-6 sm:col-12">
-                                            <CharsCard name="Hydrogen-F" img="https://rickandmortyapi.com/api/character/avatar/161.jpeg" button={false}></CharsCard>
-                                        </div>
-                                    </div>
-                                ) : null
-                                }
+                                    {
+                                        checkResidents(residents) ? (
 
+                                            residents.slice(0,5).map(char => {
+                                                return (
+                                                    <div className="xl:col-6 l:col-6 sm:col-12">
+                                                        <CharsCard name={char.name} img={char.image} key={char.id}  button={false}></CharsCard>
+                                                    </div>
+                                                )
+                                                })
 
+                                        ): null
+                                    }
+
+                                </div>
                             </div>
                         </div>
                     </div>
