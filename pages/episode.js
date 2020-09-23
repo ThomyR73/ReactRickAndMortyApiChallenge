@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
-import EpisodeCard from '../components/EpisodeCard'
-import LocationCard from '../components/LocationCard'
+import EpisodeCard from '../components/cards/EpisodeCard'
+import LocationCard from '../components/cards/LocationCard'
 
 
 export default function Episodes() {
@@ -17,11 +17,11 @@ export default function Episodes() {
               </div>
             </div>
             <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013"
+              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013" episodeId="1"
                 characters={
                   [
                     {
-                      "name": "Hydrogen-F",
+                      "name": "pipo",
                       "image": "https://rickandmortyapi.com/api/character/avatar/161.jpeg"
                     },
                     {
@@ -43,11 +43,11 @@ export default function Episodes() {
                   ]
                 }
               ></EpisodeCard>
-              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013"
+              <EpisodeCard name="Pilo" episode="S01E01" release="December 2, 2013" episodeId="2"
                 characters={
                   [
                     {
-                      "name": "Hydrogen-F",
+                      "name": "pip",
                       "image": "https://rickandmortyapi.com/api/character/avatar/161.jpeg"
                     },
                     {
@@ -69,11 +69,11 @@ export default function Episodes() {
                   ]
                 }
               ></EpisodeCard>
-              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013"
+              <EpisodeCard name="Pil" episode="S01E01" release="December 2, 2013" episodeId="3"
                 characters={
                   [
                     {
-                      "name": "Hydrogen-F",
+                      "name": "Hpi",
                       "image": "https://rickandmortyapi.com/api/character/avatar/161.jpeg"
                     },
                     {
@@ -95,11 +95,11 @@ export default function Episodes() {
                   ]
                 }
               ></EpisodeCard>
-              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013"
+              <EpisodeCard name="Pi" episode="S01E01" release="December 2, 2013" episodeId="4"
                 characters={
                   [
                     {
-                      "name": "Hydrogen-F",
+                      "name": "F",
                       "image": "https://rickandmortyapi.com/api/character/avatar/161.jpeg"
                     },
                     {
@@ -121,7 +121,7 @@ export default function Episodes() {
                   ]
                 }
               ></EpisodeCard>
-              <EpisodeCard name="Pilot" episode="S01E01" release="December 2, 2013"
+              <EpisodeCard name="P" episode="S01E01" release="December 2, 2013" episodeId="5"
                 characters={
                   [
                     {

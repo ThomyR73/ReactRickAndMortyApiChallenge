@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CharsCard = ({ img, name, type, gender, specie, button }) => {
+const CharsCard = ({ img, name, type, gender, specie, button, charid }) => {
     return (
         <div className="card m-2">
             <img src={img} className="card-img-top"/>
@@ -10,14 +10,14 @@ const CharsCard = ({ img, name, type, gender, specie, button }) => {
                 </h5>
                 {button == true ? (
                     <div>
-                        <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" className="btn btn-dark" data-toggle="modal" data-target={"#Modal"+charid}>
                             View More
                     </button>
-                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal fade" id={"Modal"+charid} tabIndex="-1" aria-labelledby={"ModalLabel"+charid} aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">{name}</h5>
+                                        <h5 className="modal-title" id={"ModalLabel"+charid}>{name}</h5>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

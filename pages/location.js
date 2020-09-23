@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import LocationCard from '../components/LocationCard'
+import LocationCard from '../components/cards/LocationCard'
 
 export default function Characters() {
     return (
@@ -16,7 +16,7 @@ export default function Characters() {
               </div>
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
                 
-              <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet"
+              <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet" locationId="1"
                                 residents={
                                     [
                                         {
@@ -42,7 +42,7 @@ export default function Characters() {
                                     ]
                                 }
                             ></LocationCard>
-                            <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet"
+                            <LocationCard name="Alphabetriu" dimension="Replacement Dimension" type="Planet" locationId="2"
                                 residents={
                                     [
                                         {
@@ -68,7 +68,7 @@ export default function Characters() {
                                     ]
                                 }
                             ></LocationCard>
-                            <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet"
+                            <LocationCard name="Alphabetri" dimension="Replacement Dimension" type="Planet" locationId="3"
                                 residents={
                                     [
                                         {
@@ -94,7 +94,7 @@ export default function Characters() {
                                     ]
                                 }
                             ></LocationCard>
-                            <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet"
+                            <LocationCard name="Alphabetr" dimension="Replacement Dimension" type="Planet" locationId="4"
                                 residents={
                                     [
                                         {
@@ -120,7 +120,7 @@ export default function Characters() {
                                     ]
                                 }
                             ></LocationCard>
-                            <LocationCard name="Alphabetrium" dimension="Replacement Dimension" type="Planet"
+                            <LocationCard name="Alphabet" dimension="Replacement Dimension" type="Planet" locationId="5"
                                 residents={
                                     [
                                         {
