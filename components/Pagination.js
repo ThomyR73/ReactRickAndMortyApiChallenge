@@ -6,6 +6,8 @@ const Pagination = ({ next, prev, onNext, onPrev, pages }) => {
         return prev ? prev + 1 : next - 1;
     }
     const currentPage = getCurrentPage()
+    
+    window.scrollTo(0,0)
 
     return (
         <div className="row d-flex flex-row justify-content-center align-self-end col-12 mt-3">
