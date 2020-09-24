@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+The app is live [here](https://react-rick-and-morty-api-challenge.vercel.app/)
+
 First, run the development server:
 
 ```bash
