@@ -2,8 +2,8 @@ import React from 'react'
 
 const CharsCard = ({ img, name, type, gender, specie, button, charid }) => {
     return (
-        <div className="card m-2">
-            <img src={img} className="card-img-top"/>
+        <div className={button ? "card m-md-2 col-sm-11 col-md-5 col-xl-3 ceroPadding" : "card col-sm-12 ceroPadding"}>
+            <img src={img} className="card-img-top fullSizeImg"/>
             <div className="card-body">
                 <h5 className="card-title">
                     {name}

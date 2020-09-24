@@ -11,7 +11,7 @@ import Search from '../components/Search'
 import Error from '../components/Error'
 
 
-const GET_CHARS = gql`
+const GET_LOCATIONS = gql`
 query locations($page: Int, $filter: FilterLocation){
     locations(page:$page, filter: $filter){
       results{
@@ -34,14 +34,14 @@ query locations($page: Int, $filter: FilterLocation){
     }
   }
 `
-export default function Characters() {
+export default function Location() {
   const initialFilter = {
     name: ""
   };
 
   const [filter, setFilter] = useState({ ...initialFilter })
 
-  const { data, loading, error, fetchMore } = useQuery(GET_CHARS, {
+  const { data, loading, error, fetchMore } = useQuery(GET_LOCATIONS, {
     variables: {
       page: 1,
       filter

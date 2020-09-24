@@ -31,3 +31,10 @@ a {
     width: 50px !important;
   }
 }
+.fullSizeImg{
+  width: 100%;
+}
+.ceroPadding{
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
