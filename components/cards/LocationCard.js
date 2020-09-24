@@ -10,15 +10,15 @@ const LocationCard = ({ name, dimension, type, residents, locationId }) => {
         return true
     }
     return (
-        <div className="card m-2 col-sm-11 col-md-5 col-xl-3">
-            <div className="card-body">
+        <div className="card mb-3 m-md-2 col-sm-11 col-md-3 col-xl-2 ceroPadding">
+            <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
                     {name}
                 </h5>
                 <p className="card-text">
                     {dimension}
                 </p>
-                <button type="button" className="btn btn-dark" data-toggle="modal" data-target={"#Modal" + locationId}>
+                <button type="button" className="btn btn-dark align-self-start mt-auto" data-toggle="modal" data-target={"#Modal" + locationId}>
                     View More
                 </button>
                 <div className="modal fade" id={"Modal" + locationId} tabIndex="-1" aria-labelledby={"ModalLabel" + locationId} aria-hidden="true">

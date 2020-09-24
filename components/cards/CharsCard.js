@@ -2,22 +2,22 @@ import React from 'react'
 
 const CharsCard = ({ img, name, type, gender, specie, button, charid }) => {
     return (
-        <div className={button ? "card m-md-2 col-sm-11 col-md-5 col-xl-3 ceroPadding" : "card col-sm-12 ceroPadding"}>
-            <img src={img} className="card-img-top fullSizeImg"/>
-            <div className="card-body">
+        <div className={button ? "card mb-3 m-md-2 col-sm-11 col-md-3 col-xl-2 ceroPadding" : "card col-sm-12 ceroPadding"}>
+            <img src={img} className="card-img-top fullSizeImg" alt={name}/>
+            <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
                     {name}
                 </h5>
                 {button == true ? (
-                    <div>
-                        <button type="button" className="btn btn-dark" data-toggle="modal" data-target={"#Modal"+charid}>
+                    <>
+                    <button type="button" className="btn btn-dark align-self-start mt-auto" data-toggle="modal" data-target={"#Modal" + charid}>
                             View More
                     </button>
-                        <div className="modal fade" id={"Modal"+charid} tabIndex="-1" aria-labelledby={"ModalLabel"+charid} aria-hidden="true">
+                        <div className="modal fade" id={"Modal" + charid} tabIndex="-1" aria-labelledby={"ModalLabel" + charid} aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title" id={"ModalLabel"+charid}>{name}</h5>
+                                        <h5 className="modal-title" id={"ModalLabel" + charid}>{name}</h5>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -47,7 +47,7 @@ const CharsCard = ({ img, name, type, gender, specie, button, charid }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </>
                 ) : null}
             </div>
         </div>

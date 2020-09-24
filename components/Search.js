@@ -43,8 +43,8 @@ const Search = ({ setFilter, searching }) => {
 
 
     return (
-        <form className="col-12 form" onSubmit={onSubmit}>
-            <div className="input-group bg-light text-white mt-3 mb-3">
+        <form className="col-12 form ceroPadding col-md-11 " onSubmit={onSubmit}>
+            <div className="input-group bg-light text-white mt-3 mb-3 pl-md-3 pr-md-4">
                 <input type="text" className="form-control" placeholder={`Search ${searching}`} value={name} onChange={e => startSearch(e.target.value)} />
                 <div className="input-group-append">
                     <button className="btn btn-outline-dark" type="submit">Search</button>
