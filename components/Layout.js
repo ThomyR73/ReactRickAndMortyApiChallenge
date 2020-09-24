@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
                 </div>
                 <div className="row bg-dark text-light pl-3 pr-3 pt-3 pb-2 d-flex justify-content-between h-auto">
                     <h6 className="text-bold"   >Juan Thomas Romano</h6>
-                    <h6>21/09/2020</h6>
+                    <h6>24/09/2020</h6>
                 </div>
 
 
