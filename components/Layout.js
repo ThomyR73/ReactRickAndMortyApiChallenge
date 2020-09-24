@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
                 <div className="row bg-dark">
                     <Header></Header>
                 </div>
-                <div className="row h-80">
+                <div className="row h-80 d-flex flex-column flex-md-row">
                     <Sidebar></Sidebar>
                     {children}
                 </div>
