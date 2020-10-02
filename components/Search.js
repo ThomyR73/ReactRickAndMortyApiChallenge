@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const Search = ({ setFilter, searching }) => {
     const [name, setName] = useState('')
-    const [reLoad, setReLoad] = useState(false)
 
     const onSubmit = e => {
         e.preventDefault()
@@ -16,7 +15,7 @@ const Search = ({ setFilter, searching }) => {
         setName("")
 
         setFilter({
-            name
+            name: ""
         })
     }
 
@@ -29,16 +28,10 @@ const Search = ({ setFilter, searching }) => {
         }
         if (e.length == 0) {
             onClear()
-            setReLoad(true)
         }
         else {
             setName(e)
         }
-    }
-
-    if(reLoad){
-        onClear()
-        setReLoad(false)
     }
 
 
