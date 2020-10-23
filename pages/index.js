@@ -67,7 +67,7 @@ export default function Characters() {
           <div className="col-12">
             <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
               {characterData.map(char => {
-                return <CharsCard img={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} charid={char.id} button={true} key={char.id}></CharsCard>
+                return <CharsCard img={char.image}  name={char.name} type={char.type} specie={char.species} gender={char.gender} charid={char.id} button={true} key={char.id}></CharsCard>
               })}
 
             </div>
