@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 
 import { useQuery, gql } from '@apollo/client'
@@ -30,6 +30,7 @@ query characters($page: Int, $filter: FilterCharacter){
   }
 }
 `
+
 export default function Characters() {
   const initialFilter = {
     name: ""
@@ -52,32 +53,30 @@ export default function Characters() {
   const onPrev = () => paginate(data, fetchMore, prev);
   const onNext = () => paginate(data, fetchMore, next);
 
-  const renderContent = () => {
+  const renderContent = ():ReactNode => {
     if (loading) return (
-      <Loading></Loading>
+      <Loading />
     )
 
     if (error) return (
-      <Error errorMessage={error}></Error>
+      <Error errorMessage={error} />
     )
 
     return (
       <>
         { characterData && (
-          <div className="col-12">
-            <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-              {characterData.map(char => {
-                return <CharsCard img={char.image}  name={char.name} type={char.type} specie={char.species} gender={char.gender} charid={char.id} button={true} key={char.id}></CharsCard>
-              })}
+          <>
+            <div className="col-12">
+              <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
+                {characterData.map(char => {
+                  return <CharsCard img={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} charid={char.id} button={true} key={char.id}></CharsCard>
+                })}
 
+              </div>
             </div>
-          </div>
+            <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev}></Pagination>
+          </>
         )}
-
-        { characterData && (
-          <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev}></Pagination>
-        )
-        }
       </>
     )
   }
@@ -87,7 +86,7 @@ export default function Characters() {
     <Layout>
       <div className="container-fluid bg-light d-flex align-items-start col-md-10">
         <div className="align-items-start h-100 col-md-12">
-          <Search setFilter={setFilter } searching="characters"></Search>
+          <Search setFilter={setFilter} searching="characters"></Search>
 
           {renderContent()}
 
@@ -97,7 +96,7 @@ export default function Characters() {
   )
 }
 
-const paginate = (data, fetchMore, page) => fetchMore({
+const paginate = (data: any, fetchMore: Function, page: number): any => fetchMore({
   variables: {
     page,
   },

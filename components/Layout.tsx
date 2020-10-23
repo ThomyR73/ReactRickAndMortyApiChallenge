@@ -3,8 +3,11 @@ import Head from 'next/head'
 import Header from './Header'
 import Sidebar from './Sidebar'
 
-const Layout = ({ children }) => {
-    return (
+interface Props {
+    children: React.ReactNode
+}
+
+const Layout = ({ children }:Props) => (
         <>
             <Head>
                 <title>React Challenge</title>
@@ -13,10 +16,10 @@ const Layout = ({ children }) => {
             </Head>
             <div className="container-fluid bg-light h-80">
                 <div className="row bg-dark">
-                    <Header></Header>
+                    <Header/>
                 </div>
                 <div className="row h-80 d-flex flex-column flex-md-row">
-                    <Sidebar></Sidebar>
+                    <Sidebar/>
                     {children}
                 </div>
                 <div className="row bg-dark text-light pl-3 pr-3 pt-3 pb-2 d-flex justify-content-between h-auto">
@@ -30,6 +33,5 @@ const Layout = ({ children }) => {
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossOrigin="anonymous"></script>
         </>
     )
-}
 
 export default Layout

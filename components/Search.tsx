@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 
-const Search = ({ setFilter, searching }) => {
+interface Props {
+    setFilter: Function,
+    searching: String,
+}
+
+const Search = ({ setFilter, searching }: Props) => {
     const [name, setName] = useState('')
 
     const onSubmit = e => {
