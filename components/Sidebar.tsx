@@ -10,7 +10,7 @@ const Sidebar = () => {
             <form className="limitNavWidth">
                 <div className="form-check form-check-inline">
                     <Link href="/">
-                        <input className="form-check-input" type="radio" name="filter" id="charters" value="charters" readOnly checked={ router.pathname === "/" ? (true) : (false) }/>
+                        <input className="form-check-input" type="radio" name="filter" id="charters" value="charters" readOnly checked={ router.pathname === "/" }/>
                     </Link>
                     <label className="form-check-label" htmlFor="charters">
                         Characters
@@ -18,7 +18,7 @@ const Sidebar = () => {
                 </div>
                 <div className="form-check form-check-inline">
                     <Link href="location">
-                        <input className="form-check-input" type="radio" name="filter" id="locations" value="locations" readOnly checked={ router.pathname === "/location" ? (true) : (false) }/>
+                        <input className="form-check-input" type="radio" name="filter" id="locations" value="locations" readOnly checked={ router.pathname === "/location" }/>
                     </Link>
                     <label className="form-check-label" htmlFor="locations">
                         Locations
@@ -26,7 +26,7 @@ const Sidebar = () => {
                 </div>
                 <div className="form-check form-check-inline">
                     <Link href="episode">
-                        <input className="form-check-input" type="radio" name="filter" id="episodes" value="episodes" readOnly checked={ router.pathname === "/episode" ? (true) : (false) }/>
+                        <input className="form-check-input" type="radio" name="filter" id="episodes" value="episodes" readOnly checked={ router.pathname === "/episode" }/>
                     </Link>
                     <label className="form-check-label" htmlFor="episodes">
                         Episodes

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import Sidebar from './Sidebar'
@@ -7,7 +7,7 @@ interface Props {
     children: React.ReactNode
 }
 
-const Layout = ({ children }:Props) => (
+const Layout: React.FunctionComponent = ({ children }:Props) => (
         <>
             <Head>
                 <title>React Challenge</title>

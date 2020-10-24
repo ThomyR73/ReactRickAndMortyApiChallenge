@@ -8,7 +8,8 @@ interface Props {
 const Search = ({ setFilter, searching }: Props) => {
     const [name, setName] = useState('')
 
-    const onSubmit = e => {
+    const onSubmit = (e: React.FormEvent) => {
+        console.log(typeof e)
         e.preventDefault()
 
         setFilter({
@@ -24,14 +25,14 @@ const Search = ({ setFilter, searching }: Props) => {
         })
     }
 
-    const startSearch = (e) => {
+    const startSearch = (e: string) => {
         if (e.length >= 3) {
             setName(e)
             setFilter({
                 name
             })
         }
-        if (e.length == 0) {
+        if (e.length === 0) {
             onClear()
         }
         else {
@@ -41,7 +42,7 @@ const Search = ({ setFilter, searching }: Props) => {
 
 
     return (
-        <form className="col-12 form ceroPadding col-md-11 " onSubmit={onSubmit}>
+        <form className="col-12 form ceroPadding col-md-11 " onSubmit={e => onSubmit(e)}>
             <div className="input-group bg-light text-white mt-3 mb-3 pl-md-3 pr-md-4">
                 <input type="text" className="form-control" placeholder={`Search ${searching}`} value={name} onChange={e => startSearch(e.target.value)} />
                 <div className="input-group-append">

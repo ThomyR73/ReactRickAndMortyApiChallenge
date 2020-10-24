@@ -4,7 +4,7 @@ import React, { ReactNode, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import Layout from '../components/Layout'
-import CharsCard from '../components/cards/CharsCard'
+import Card from '../components/cards/Card'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
 import Search from '../components/Search'
@@ -52,8 +52,10 @@ export default function Characters() {
 
   const onPrev = () => paginate(data, fetchMore, prev);
   const onNext = () => paginate(data, fetchMore, next);
+  const toFirst = () => paginate(data, fetchMore, 1);
+  const toLast = () => paginate(data, fetchMore, pages);
 
-  const renderContent = ():ReactNode => {
+  const renderContent = (): ReactNode => {
     if (loading) return (
       <Loading />
     )
@@ -68,13 +70,13 @@ export default function Characters() {
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {characterData.map(char => {
-                  return <CharsCard img={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} charid={char.id} button={true} key={char.id}></CharsCard>
-                })}
+                {characterData.map(char => (
+                  <Card img={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} cardId={char.id} button={true} typeCard="Character" key={char.id} />
+                ))}
 
               </div>
             </div>
-            <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev}></Pagination>
+            <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev} toFirst={toFirst} toLast={toLast} />
           </>
         )}
       </>
@@ -86,7 +88,7 @@ export default function Characters() {
     <Layout>
       <div className="container-fluid bg-light d-flex align-items-start col-md-10">
         <div className="align-items-start h-100 col-md-12">
-          <Search setFilter={setFilter} searching="characters"></Search>
+          <Search setFilter={setFilter} searching="characters" />
 
           {renderContent()}
 
