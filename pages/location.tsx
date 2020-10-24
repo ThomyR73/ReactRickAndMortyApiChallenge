@@ -1,47 +1,47 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 
 import { useQuery, gql } from '@apollo/client'
 
 import Layout from '../components/Layout'
-import Card from '../components/cards/Card'
+import Card from '../components/Card'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
 import Search from '../components/Search'
 import Error from '../components/Error'
 
 
-const GET_EPISODES = gql`
-query episodes ($page: Int, $filter:FilterEpisode ){
-  episodes(page:$page, filter:$filter){
-    results{
-      name
-      episode
-      air_date
-      id
-      characters{
+const GET_LOCATIONS = gql`
+query locations($page: Int, $filter: FilterLocation){
+    locations(page:$page, filter: $filter){
+      results{
         name
-        image
+        dimension
+        type
         id
+        residents{
+          name
+          image
+          id
+        }
+      }
+      info{
+        count
+        next
+        prev
+        pages
       }
     }
-    info{
-      pages
-      next
-      prev
-      count
-    }
   }
-}
 `
-export default function Episodes() {
+export default function Location() {
   const initialFilter = {
     name: ""
   };
 
   const [filter, setFilter] = useState({ ...initialFilter })
 
-  const { data, loading, error, fetchMore } = useQuery(GET_EPISODES, {
+  const { data, loading, error, fetchMore } = useQuery(GET_LOCATIONS, {
     variables: {
       page: 1,
       filter
@@ -50,32 +50,32 @@ export default function Episodes() {
     fetchPolicy: 'cache-and-network'
   });
 
-  const episodesData = data ? data['episodes']['results'] : [];
-  const { pages, next, prev } = data ? data['episodes']['info'] : [];
+  const locationData = data ? data['locations']['results'] : [];
+  const { pages, next, prev } = data ? data['locations']['info'] : [];
 
   const onPrev = () => paginate(data, fetchMore, prev);
   const onNext = () => paginate(data, fetchMore, next);
   const toFirst = () => paginate(data, fetchMore, 1);
   const toLast = () => paginate(data, fetchMore, pages);
 
-  const renderContent = () => {
+  const renderContent = (): ReactNode => {
     if (loading) return (
       <Loading/>
     )
 
     if (error) return (
-      <Error errorMessage={error}/>
+      <Error error={error}/>
     )
 
     return (
       <>
-        { episodesData && (
+        { locationData && (
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {episodesData.map(episode => (
-                  <Card name={episode.name} typeCard="Episode" episode={episode.episode} release={episode.air_date} cardId={episode.id} key={episode.episode} characters={episode.characters} button={true}/>
-                ))}
+                {locationData.map(location => {
+                  return <Card name={location.name} typeCard="Location" dimension={location.dimension} type={location.type} cardId={location.id} key={location.name} residents={location.residents} button={true}/>
+                })}
               </div>
             </div>
             <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev} toFirst={toFirst} toLast={toLast}/>
@@ -89,7 +89,7 @@ export default function Episodes() {
     <Layout>
       <div className="container-fluid bg-light d-flex align-items-start col-md-10">
         <div className="align-items-start h-100 col-md-12">
-          <Search setFilter={setFilter} searching="episodes"/>
+          <Search setFilter={setFilter} searching="locations" />
 
           {renderContent()}
 
@@ -99,7 +99,7 @@ export default function Episodes() {
   )
 }
 
-const paginate = (data, fetchMore, page) => fetchMore({
+const paginate = (data: any, fetchMore: Function, page: number): any => fetchMore({
   variables: {
     page,
   },

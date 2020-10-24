@@ -4,7 +4,7 @@ import React, { ReactNode, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import Layout from '../components/Layout'
-import Card from '../components/cards/Card'
+import Card from '../components/Card'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
 import Search from '../components/Search'
@@ -61,7 +61,7 @@ export default function Characters() {
     )
 
     if (error) return (
-      <Error errorMessage={error} />
+      <Error error={error} />
     )
 
     return (
