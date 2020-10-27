@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 
 
 import { useQuery, gql } from '@apollo/client'
@@ -30,13 +30,23 @@ query characters($page: Int, $filter: FilterCharacter){
   }
 }
 `
-
+interface filter {
+  name: string
+}
+interface Character {
+  name: string;
+  image: string;
+  type: string;
+  gender: string;
+  species: string;
+  id: string
+}
 export default function Characters() {
-  const initialFilter = {
+  const initialFilter: filter = {
     name: ""
   };
 
-  const [filter, setFilter] = useState({ ...initialFilter })
+  const [filter, setFilter] = useState<filter>({ ...initialFilter })
 
   const { data, loading, error, fetchMore } = useQuery(GET_CHARS, {
     variables: {
@@ -55,7 +65,7 @@ export default function Characters() {
   const toFirst = () => paginate(data, fetchMore, 1);
   const toLast = () => paginate(data, fetchMore, pages);
 
-  const renderContent = (): ReactNode => {
+  const renderContent = (): React.ReactNode => {
     if (loading) return (
       <Loading />
     )
@@ -70,8 +80,8 @@ export default function Characters() {
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {characterData.map(char => (
-                  <Card img={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} cardId={char.id} button={true} typeCard="Character" key={char.id} />
+                {characterData.map((char:Character) => (
+                  <Card image={char.image} name={char.name} type={char.type} specie={char.species} gender={char.gender} cardId={char.id} button={true} typeCard="Character" key={char.id} />
                 ))}
 
               </div>

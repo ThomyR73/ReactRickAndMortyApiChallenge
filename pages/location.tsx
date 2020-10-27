@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 
 
 import { useQuery, gql } from '@apollo/client'
@@ -34,12 +34,31 @@ query locations($page: Int, $filter: FilterLocation){
     }
   }
 `
-export default function Location() {
-  const initialFilter = {
+
+interface filter {
+  name: string
+}
+
+interface Characters {
+  name: string;
+  image: string;
+  id: string
+}
+
+interface Location {
+  name: string;
+  dimension: string;
+  type: string;
+  id: string;
+  residents: Array<Characters>
+}
+
+export default function Locations() {
+  const initialFilter: filter = {
     name: ""
   };
 
-  const [filter, setFilter] = useState({ ...initialFilter })
+  const [filter, setFilter] = useState<filter>({ ...initialFilter })
 
   const { data, loading, error, fetchMore } = useQuery(GET_LOCATIONS, {
     variables: {
@@ -58,7 +77,7 @@ export default function Location() {
   const toFirst = () => paginate(data, fetchMore, 1);
   const toLast = () => paginate(data, fetchMore, pages);
 
-  const renderContent = (): ReactNode => {
+  const renderContent = (): React.ReactNode => {
     if (loading) return (
       <Loading/>
     )
@@ -73,7 +92,7 @@ export default function Location() {
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {locationData.map(location => {
+                {locationData.map((location:Location) => {
                   return <Card name={location.name} typeCard="Location" dimension={location.dimension} type={location.type} cardId={location.id} key={location.name} residents={location.residents} button={true}/>
                 })}
               </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 interface Props {
-    setFilter: Function,
+    setFilter:  React.Dispatch<React.SetStateAction<{ name: string; }>>,
     searching: String,
 }
 
-const Search = ({ setFilter, searching }: Props) => {
-    const [name, setName] = useState('')
+const Search: React.FunctionComponent<Props> = ({ setFilter, searching }) => {
+    const [name, setName] = useState<string>('')
 
     const onSubmit = (e: React.FormEvent) => {
         console.log(typeof e)

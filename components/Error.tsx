@@ -5,8 +5,8 @@ interface Props {
   error: ApolloError
 }
 
-const Error = ({ error }) => {
-  const errorMessage = () => {
+const Error: React.FunctionComponent<Props> = ({ error }) => {
+  const errorMessage = (): string => {
     switch (error.message) {
       case "Response not successful: Received status code 400":
         return "Error 400: An error occurred with the request"

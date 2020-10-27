@@ -1,25 +1,31 @@
 import React from 'react';
 
+interface Characters {
+    name: string;
+    image: string;
+    id: string
+}
+
 interface Props {
     name: string,
-    img?: string,
+    image?: string,
     type?: string,
     gender?: string,
     specie?: string,
     episode?: string,
     release?: string,
-    characters?: Array<any>,
+    characters?: Array<Characters>,
     dimension?: string,
-    residents?: Array<any>,
+    residents?: Array<Characters>,
     cardId?: string,
     typeCard: string,
     button: boolean
 }
 interface CheckCharsProps {
-    characters: Array<any>
+    characters: Array<Characters>
 }
 
-const Card = ({ name, img, type, gender, specie, episode, release, characters, dimension, residents, cardId, typeCard, button }: Props) => {
+const Card: React.FunctionComponent<Props> = ({ name, image, type, gender, specie, episode, release, characters, dimension, residents, cardId, typeCard, button }: Props) => {
     const CheckChars = ({ characters }: CheckCharsProps) => {
         const { name } = characters[0]
         return (!!name ? (
@@ -27,7 +33,7 @@ const Card = ({ name, img, type, gender, specie, episode, release, characters, d
                 {
                     characters.slice(0, 5).map(char => (
                         <div className="m-2 col-sm-10 col-xl-5" key={char.id}  >
-                            <Card name={char.name} img={char.image} button={false} typeCard="Character" />
+                            <Card name={char.name} image={char.image} button={false} typeCard="Character" />
                         </div>
                     ))
                 }
@@ -45,8 +51,8 @@ const Card = ({ name, img, type, gender, specie, episode, release, characters, d
     return (
         <>
             <div className={button ? "card mb-3 m-md-2 col-sm-11 col-md-3 col-xl-2 ceroPadding" : "card col-sm-12 ceroPadding"}>
-                {img && (
-                    <img src={img} className="card-img-top fullSizeImg" alt={name} />
+                {image && (
+                    <img src={image} className="card-img-top fullSizeImg" alt={name} />
                 )}
                 <div className="card-body d-flex flex-column">
                     <h5 className="card-title">
@@ -72,9 +78,9 @@ const Card = ({ name, img, type, gender, specie, episode, release, characters, d
                                             </button>
                                         </div>
                                         <div className="modal-body">
-                                            {img && (
+                                            {image && (
                                                 <div className="row mb-3">
-                                                    <img className="img-fluid col-12" src={img} />
+                                                    <img className="img-fluid col-12" src={image} />
                                                 </div>)}
                                             {type && (
                                                 <div className="row ml-1">

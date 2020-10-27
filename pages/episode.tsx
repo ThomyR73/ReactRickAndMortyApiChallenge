@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 
 
 import { useQuery, gql } from '@apollo/client'
@@ -34,12 +34,28 @@ query episodes ($page: Int, $filter:FilterEpisode ){
   }
 }
 `
+
+interface filter {
+  name: string
+}
+interface Characters {
+  name: string;
+  image: string;
+  id: string
+}
+interface Episode {
+  name: string;
+  episode: string;
+  air_date: string;
+  id: string;
+  characters: Array<Characters>
+}
 export default function Episodes() {
-  const initialFilter = {
+  const initialFilter: filter = {
     name: ""
   };
 
-  const [filter, setFilter] = useState({ ...initialFilter })
+  const [filter, setFilter] = useState<filter>({ ...initialFilter })
 
   const { data, loading, error, fetchMore } = useQuery(GET_EPISODES, {
     variables: {
@@ -58,13 +74,13 @@ export default function Episodes() {
   const toFirst = () => paginate(data, fetchMore, 1);
   const toLast = () => paginate(data, fetchMore, pages);
 
-  const renderContent = (): ReactNode => {
+  const renderContent = (): React.ReactNode => {
     if (loading) return (
-      <Loading/>
+      <Loading />
     )
 
     if (error) return (
-      <Error error={error}/>
+      <Error error={error} />
     )
 
     return (
@@ -73,12 +89,12 @@ export default function Episodes() {
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {episodesData.map(episode => (
-                  <Card name={episode.name} typeCard="Episode" episode={episode.episode} release={episode.air_date} cardId={episode.id} key={episode.episode} characters={episode.characters} button={true}/>
+                {episodesData.map( (episode: Episode)  => (
+                  <Card name={episode.name} typeCard="Episode" episode={episode.episode} release={episode.air_date} cardId={episode.id} key={episode.episode} characters={episode.characters} button={true} />
                 ))}
               </div>
             </div>
-            <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev} toFirst={toFirst} toLast={toLast}/>
+            <Pagination next={next} prev={prev} pages={pages} onNext={onNext} onPrev={onPrev} toFirst={toFirst} toLast={toLast} />
           </>
         )}
       </>
@@ -89,7 +105,7 @@ export default function Episodes() {
     <Layout>
       <div className="container-fluid bg-light d-flex align-items-start col-md-10">
         <div className="align-items-start h-100 col-md-12">
-          <Search setFilter={setFilter} searching="episodes"/>
+          <Search setFilter={setFilter} searching="episodes" />
 
           {renderContent()}
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const Sidebar = () => {
+const Sidebar: React.FunctionComponent = () => {
     const router = useRouter()
     return (
         <aside className=" bg-secondary h-auto pt-1 pb-1 text-white col-md-2 limitNavHeight">
