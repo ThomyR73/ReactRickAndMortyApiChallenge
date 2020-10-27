@@ -72,10 +72,10 @@ export default function Locations() {
   const locationData = data ? data['locations']['results'] : [];
   const { pages, next, prev } = data ? data['locations']['info'] : [];
 
-  const onPrev = () => paginate(data, fetchMore, prev);
-  const onNext = () => paginate(data, fetchMore, next);
-  const toFirst = () => paginate(data, fetchMore, 1);
-  const toLast = () => paginate(data, fetchMore, pages);
+  const onPrev:Function = () => paginate(data, fetchMore, prev);
+  const onNext:Function = () => paginate(data, fetchMore, next);
+  const toFirst:Function = () => paginate(data, fetchMore, 1);
+  const toLast:Function = () => paginate(data, fetchMore, pages);
 
   const renderContent = (): React.ReactNode => {
     if (loading) return (

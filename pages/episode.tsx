@@ -69,12 +69,12 @@ export default function Episodes() {
   const episodesData = data ? data['episodes']['results'] : [];
   const { pages, next, prev } = data ? data['episodes']['info'] : [];
 
-  const onPrev = () => paginate(data, fetchMore, prev);
-  const onNext = () => paginate(data, fetchMore, next);
-  const toFirst = () => paginate(data, fetchMore, 1);
-  const toLast = () => paginate(data, fetchMore, pages);
+  const onPrev:Function = () => paginate(data, fetchMore, prev);
+  const onNext:Function = () => paginate(data, fetchMore, next);
+  const toFirst:Function = () => paginate(data, fetchMore, 1);
+  const toLast:Function = () => paginate(data, fetchMore, pages);
 
-  const renderContent = (): React.ReactNode => {
+  const renderContent = () => {
     if (loading) return (
       <Loading />
     )
@@ -89,7 +89,7 @@ export default function Episodes() {
           <>
             <div className="col-12">
               <div className="row d-flex flex-row justify-content-center justify-content-md-start pl-md-2 align-self-start">
-                {episodesData.map( (episode: Episode)  => (
+                {episodesData.map( (episode)  => (
                   <Card name={episode.name} typeCard="Episode" episode={episode.episode} release={episode.air_date} cardId={episode.id} key={episode.episode} characters={episode.characters} button={true} />
                 ))}
               </div>
